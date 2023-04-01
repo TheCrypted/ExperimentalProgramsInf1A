@@ -1,0 +1,72 @@
+Exercise 1
+Write a function
+choice :: Digit -> [Digit]
+that converts a space to a list of all the digits from '1'to '9', and otherwise converts a digit
+to a list containing just that digit.
+Use choice to write a function
+choices :: Matrix Digit -> Matrix [Digit]
+which does that for all of the cells in a Sudoku puzzle. For example,
+choices easy ==
+[["123456789", "123456789", "123456789",
+"123456789", "3", "4",
+"5", "123456789", "123456789"],
+["123456789", "123456789", "8",
+"9", "123456789", "123456789",
+"123456789", "3", "123456789"],
+["3", "123456789", "123456789",
+"123456789", "123456789", "2",
+"7", "8", "9"],
+["2", "123456789", "4",
+"123456789", "123456789", "6",
+"8", "1", "5"],
+["123456789", "123456789", "123456789",
+"123456789", "4", "123456789",
+"123456789", "123456789", "123456789"],
+["8", "7", "6",
+"5", "123456789", "123456789",
+"4", "123456789", "2"],
+["7", "5", "2",
+"3", "123456789", "123456789",
+"123456789", "123456789", "6"],
+["123456789", "1", "123456789",
+"123456789", "123456789", "7",
+"9", "123456789", "123456789"],
+["123456789", "123456789", "9",
+"4", "2", "123456789",
+"123456789", "123456789", "123456789"]]
+3
+
+solved :: Matrix [Digit] -> Bool
+that returns true if all of the lists of choices contain exactly one digit.
+Exercise 8
+Write a function
+shortest :: Matrix [Digit] -> Int
+that returns the length of the shortest list of digits that has more than one choice. You may
+assume that the input is not solved, which means that not all lists of digits are singletons.
+The standard Prelude defines the function
+break :: (a -> Bool) -> [a] -> ([a], [a])
+that given a predicate and a list containing an element that satisfies the predicate, splits the list into
+two lists where the first is all the elements up to and not including the element which satisfies the
+predicate, and the second is the remainder, beginning with the element that satisfies the predicate.
+For example,
+break (\ds -> length ds == 2)
+["9","1578","3","67","167","4","2","15678","5678"]
+== (["9","1578","3"],["67","167","4","2","15678","5678"])
+Exercise 9
+Using shortest and using break twice, write a function
+expand :: Matrix [Digit] -> [Matrix [Digit]]
+that performs the operation described at the beginning of this section: find the earliest,
+shortest list of choices containing more than one choice, and generate a new matrix for each
+choice in the list.
+Hint: We can break the matrix up into pieces using
+(preMat, row:postMat) = break (any p) mat
+(preRow, ds:postRow) = break p row
+where p is a predicate on lists of choices that returns True if its length is equal to a given
+length. We can then reassemble the array by computing
+preMat ++ [preRow ++ [[d]] ++ postRow] ++ postMat
+where d is a chosen digit from ds.
+Exercise 10
+Using failed, solved, extract, close, prune, and expand, write a search program
+search :: Matrix Digit -> [Matrix Digit]
+that executes the search procedure described at the beginning of this section. Use it to solve
+all four sudoku puzzles.

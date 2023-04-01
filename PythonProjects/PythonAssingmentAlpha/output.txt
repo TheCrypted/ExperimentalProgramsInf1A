@@ -1,0 +1,9 @@
+Total number of universities => 100
+Available countries => UNITED KINGDOM, GERMANY, SINGAPORE, USA, AUSTRALIA, CANADA, SWITZERLAND, SWEDEN, CHINA, FRANCE, NETHERLANDS, NORWAY, JAPAN, ISRAEL, TAIWAN, SOUTH KOREA, DENMARK
+Available continents => AUSTRALIA, EUROPE, AFRICA, NORTH AMERICA, ASIA
+At international rank => 4 the university name is => University of Cambridge
+At national rank => 1 the university name is => University of Cambridge
+The average score => 86.85555555555555%
+The relative score in the continent Europe is => 92.3013342779549%
+The capital is  => London
+The capital containing universities are  =>  University College London ,  Imperial College London , King s College London
